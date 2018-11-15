@@ -74,9 +74,11 @@ pop tstack = do
     (Just x, xs) ->
       x <$ writeTVar tstack xs
 
--- | `pop` O(1)
+-- | `tryPop` O(1)
 -- Will block until value is read off the stack
+-- Won't block on empty stack
 tryPop :: TStack a -> STM (Maybe a)
-tryPop tstack =
-  fst . popStack
-    <$> readTVar tstack
+tryPop tstack = do
+  stack <- readTVar tstack
+  case popStack stack of
+    (x,xs) -> x <$ writeTVar tstack xs
