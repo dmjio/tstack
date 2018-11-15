@@ -1,7 +1,7 @@
 name:                tstack
 version:             0.1.0.0
-synopsis:            A concurrent, thread-safe, transactional Stack
-description:         A stack that runs in STM
+description:         A concurrent, thread-safe, transactional stack
+synopsis:            Stack that runs in STM
 homepage:            https://github.com/dmjio/tstack
 license:             BSD3
 license-file:        LICENSE
@@ -13,12 +13,16 @@ build-type:          Simple
 extra-source-files:  ChangeLog.md
 cabal-version:       >=1.10
 
+extra-source-files:
+  README.md
+  exe/Main.hs
+
 library
   exposed-modules:
     Control.Concurrent.STM.TStack
   build-depends:
-   base < 5,
-   stm
+    base < 5,
+    stm
   hs-source-dirs:
     src
   default-language:
@@ -35,3 +39,7 @@ executable example
     exe
   default-language:
     Haskell2010
+
+source-repository head
+  type:     git
+  location: https://github.com/dmjio/tstack
