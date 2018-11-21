@@ -8,7 +8,7 @@ nix-build
 
 ### Develop
 ```
-$ nix-shell && runghc Setup.hs build
+$ nix-shell --command 'runghc Setup.hs build'
 ```
 
 ### Example
